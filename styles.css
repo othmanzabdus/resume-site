@@ -1,0 +1,73 @@
+/* Global Layout */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF; /* Pure white text */
+}
+
+body {
+    background: url("images/background.gif") center center fixed no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(0px);
+}
+
+/* Frosted Panels */
+.panel {
+    background: rgba(20, 20, 20, 0.75);
+    padding: 1.5rem 2rem;
+    margin: 1.2rem auto;
+    width: min(90%, 850px);
+    border-radius: 12px;
+    box-shadow: 0 3px 25px rgba(0,0,0,0.35);
+}
+
+.wrapper { padding-top: 2rem; padding-bottom: 3rem; }
+
+/* Typography */
+h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.4rem; }
+h2 { font-size: 1.2rem; font-weight: 300; opacity: 0.9; }
+
+h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; }
+
+p { font-size: 1rem; line-height: 1.55; font-weight: 300; }
+
+/* Skills & Experience */
+ul.skills, ul.experience {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+}
+
+ul.skills li, ul.experience li {
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+ul.experience { flex-direction: column; }
+
+/* Download Buttons */
+.downloads { text-align: center; }
+
+.btn {
+    display: inline-block;
+    margin: 0.3rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: #FFFFFF;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.45);
+}
+
