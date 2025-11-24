@@ -35,6 +35,19 @@
 
 <body>
 
+<body>
+
+<!-- Background video wallpaper reel -->
+<video id="bg-video" autoplay muted playsinline>
+  <source src="media/wallpaper-reel.webm" type="video/webm">
+  <source src="media/wallpaper-reel.mp4" type="video/mp4">
+  <!-- Fallback: your GIF or static background will still be used via CSS -->
+</video>
+
+<div class="wrapper">
+    <!-- existing header + sections ... -->
+
+
 <div class="wrapper">
     <header class="panel">
         <h1>OZA</h1>
@@ -65,6 +78,30 @@
             <li>Freelance LLC — Digital Illustration & Websites</li>
         </ul>
     </section>
+     
+    <section class="panel contact">
+    <a class="contact-btn"
+       href="mailto:inquiries.cylinder433&#64;passinbox.com?subject=Portfolio%20Inquiry&body=Hello%20OZA%2C%0D%0A%0D%0AI%20am%20interested%20in%20your%20work.%20Please%20provide%20more%20information.%0D%0A%0D%0AThank%20you.">
+       Contact Me
+    </a>
+    </section>
+
+    <section class="panel wallpapers">
+        <h3>Digital Downloads</h3>
+        <ul>
+            <li><a href="#" data-section="cgi">CGI’s</a></li>
+            <li><a href="#" data-section="videos">Videos</a></li>
+            <li><a href="#" data-section="characters">Characters</a></li>
+        </ul>
+
+        <h3>Physical Printouts</h3>
+        <ul>
+            <li><a href="#" data-section="storyboards">Storyboards</a></li>
+            <li><a href="#" data-section="publication">Publication</a></li>
+            <li><a href="#" data-section="animation">Animation</a></li>
+        </ul>
+    </section>
+
 
     <section class="panel downloads">
         <a class="btn" href="downloads/resume.epub" download>Download EPUB</a>
@@ -72,6 +109,119 @@
     </section>
 </div>
 
+<script>
+  (function() {
+    const video = document.getElementById('bg-video');
+    if (!video) return;
+
+    // Configure times (in seconds) for each category's "still frame"
+    // These must match how you edit the video later.
+    const SECTIONS = {
+      cgi:          { time: 0 },   // e.g. 0s
+      videos:       { time: 6 },   // e.g. 6s
+      characters:   { time: 12 },  // e.g. 12s
+      storyboards:  { time: 18 },  // e.g. 18s
+      publication:  { time: 24 },  // e.g. 24s
+      animation:    { time: 30 }   // e.g. 30s
+    };
+
+    // Safe default loop segment (in seconds)
+    const DEFAULT_START = 0;    // start of neutral / safe section
+    const DEFAULT_END   = 4;    // end of safe loop (you set this in editing)
+    const HOLD_MS       = 60000; // 60 seconds hold per click
+
+    let resetTimeout = null;
+    let inDefaultLoop = true;
+
+    function startDefaultLoop() {
+      if (!video) return;
+      inDefaultLoop = true;
+
+      // Keep video inside [DEFAULT_START, DEFAULT_END] window
+      video.addEventListener('timeupdate', function onUpdate() {
+        if (inDefaultLoop && video.currentTime > DEFAULT_END) {
+          video.currentTime = DEFAULT_START;
+        }
+      });
+
+      video.currentTime = DEFAULT_START;
+      video.muted = true;
+      video.play().catch(() => {
+        // autoplay might be blocked; user click will start instead
+      });
+    }
+
+    function goToSection(key) {
+      const cfg = SECTIONS[key];
+      if (!cfg || !video) return;
+
+      // Cancel existing return timer
+      if (resetTimeout) {
+        clearTimeout(resetTimeout);
+        resetTimeout = null;
+      }
+
+      inDefaultLoop = false;
+
+      const seekAndPause = () => {
+        video.pause();
+        video.currentTime = cfg.time;
+
+        // Ensure frame has loaded
+        const onSeeked = () => {
+          video.pause(); // hold as still image
+          // Start 60-second timer to revert to default loop
+          resetTimeout = setTimeout(() => {
+            inDefaultLoop = true;
+            video.currentTime = DEFAULT_START;
+            video.play().catch(() => {});
+          }, HOLD_MS);
+          video.removeEventListener('seeked', onSeeked);
+        };
+
+        video.addEventListener('seeked', onSeeked);
+      };
+
+      if (video.readyState >= 2) {
+        seekAndPause();
+      } else {
+        video.addEventListener('loadeddata', function onLoad() {
+          seekAndPause();
+          video.removeEventListener('loadeddata', onLoad);
+        });
+      }
+    }
+
+    // Hook up link clicks
+    document.querySelectorAll('[data-section]').forEach(link => {
+      link.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        const key = link.dataset.section;
+        goToSection(key);
+      });
+    });
+
+    // Start default loop on load
+    window.addEventListener('load', () => {
+      if (video.readyState >= 2) {
+        startDefaultLoop();
+      } else {
+        video.addEventListener('loadeddata', function onLoad() {
+          startDefaultLoop();
+          video.removeEventListener('loadeddata', onLoad);
+        });
+      }
+    });
+  })();
+</script>
+
+<footer class="site-footer">
+    <span class="footer-name">© OZA</span>
+    <span class="footer-divider">•</span>
+    <a href="mailto:inquiries.cylinder433&#64;passinbox.com" class="footer-contact">
+        Contact
+    </a>
+</footer>
+
 </body>
 </html>
-

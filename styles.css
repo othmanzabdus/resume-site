@@ -1,3 +1,17 @@
+/* Background video as fullscreen wallpaper */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    /* in case video can't play */
+    background: #000000;
+}
+
+
 /* Global Layout */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -71,3 +85,86 @@ ul.experience { flex-direction: column; }
     border-color: rgba(255,255,255,0.45);
 }
 
+/* Wallpaper category links */
+.wallpapers h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.wallpapers ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.wallpapers a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid transparent;
+    color: #ffffff;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.wallpapers a:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+/* Contact Button */
+.contact-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #ffffff;
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
+}
+
+.contact-btn:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+}
+/* Footer */
+.site-footer {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 0;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    pointer-events: none; /* so background wallpaper links work cleanly */
+}
+
+.site-footer a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    pointer-events: auto; /* allow clicking only on the links */
+    transition: color .15s ease;
+}
+
+.site-footer a:hover {
+    color: rgba(255,255,255,1);
+}
+
+.footer-name {
+    padding-right: 0.4rem;
+}
+
+.footer-divider {
+    padding: 0 0.4rem;
+    opacity: 0.5;
+}
