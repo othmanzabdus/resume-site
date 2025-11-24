@@ -1,170 +1,76 @@
-/* Background video as fullscreen wallpaper */
-#bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-    /* in case video can't play */
-    background: #000000;
-}
-
-
-/* Global Layout */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* styles.css — shared for HTML preview and EPUB */
 
 html, body {
-    height: 100%;
-    font-family: 'Inter', sans-serif;
-    color: #FFFFFF; /* Pure white text */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Helvetica", "Arial", sans-serif;
+  color: white;
+  overflow: auto;
 }
 
-body {
-    background: url("images/background.gif") center center fixed no-repeat;
-    background-size: cover;
-    backdrop-filter: blur(0px);
+/* Full background GIF or image */
+.cover {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../media/background.gif") no-repeat center center fixed;
+  background-size: cover; /* Ensures full coverage */
+  z-index: -1;
 }
 
-/* Frosted Panels */
-.panel {
-    background: rgba(20, 20, 20, 0.75);
-    padding: 1.5rem 2rem;
-    margin: 1.2rem auto;
-    width: min(90%, 850px);
-    border-radius: 12px;
-    box-shadow: 0 3px 25px rgba(0,0,0,0.35);
+/* Transparent dark overlay for readability */
+.overlay {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 2em;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
-
-.wrapper { padding-top: 2rem; padding-bottom: 3rem; }
 
 /* Typography */
-h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.4rem; }
-h2 { font-size: 1.2rem; font-weight: 300; opacity: 0.9; }
+h1, h2, h3, p {
+  margin: 0.5em 0;
+}
+h1 { font-size: 2.2em; letter-spacing: 1px; }
+h2 { font-size: 1.4em; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.2em; }
+h3 { font-weight: normal; color: #ddd; }
 
-h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; }
+/* Lists */
+ul {
+  list-style: square;
+  margin-left: 1.2em;
+}
+li { margin: 0.3em 0; }
 
-p { font-size: 1rem; line-height: 1.55; font-weight: 300; }
-
-/* Skills & Experience */
-ul.skills, ul.experience {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    font-size: 0.95rem;
+/* Gallery thumbnails */
+.gallery {
+  margin-top: 1.5em;
+}
+.gallery .thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gallery img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.5);
+  transition: transform 0.3s ease;
+}
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
-ul.skills li, ul.experience li {
-    padding: 0.4rem 0.7rem;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-}
-
-ul.experience { flex-direction: column; }
-
-/* Download Buttons */
-.downloads { text-align: center; }
-
-.btn {
-    display: inline-block;
-    margin: 0.3rem;
-    padding: 0.7rem 1.2rem;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.1);
-    color: #FFFFFF;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: all 0.2s ease;
-}
-
-.btn:hover {
-    background: rgba(255,255,255,0.25);
-    border-color: rgba(255,255,255,0.45);
-}
-
-/* Wallpaper category links */
-.wallpapers h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-    font-weight: 600;
-}
-
-.wallpapers ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 1rem;
-}
-
-.wallpapers a {
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 400;
-    padding: 0.3rem 0.5rem;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid transparent;
-    color: #ffffff;
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-}
-
-.wallpapers a:hover {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.3);
-    transform: translateY(-1px);
-}
-/* Contact Button */
-.contact-btn {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 8px;
-    text-decoration: none;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.25);
-    color: #ffffff;
-    transition: background 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
-}
-
-.contact-btn:hover {
-    background: rgba(255,255,255,0.18);
-    border-color: rgba(255,255,255,0.4);
-    transform: translateY(-2px);
-}
 /* Footer */
-.site-footer {
-    width: 100%;
-    text-align: center;
-    padding: 0.8rem 0;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.6);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    pointer-events: none; /* so background wallpaper links work cleanly */
+footer {
+  margin-top: 2em;
+  font-size: 0.9em;
+  color: #ccc;
+  text-align: right;
 }
 
-.site-footer a {
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    pointer-events: auto; /* allow clicking only on the links */
-    transition: color .15s ease;
-}
-
-.site-footer a:hover {
-    color: rgba(255,255,255,1);
-}
-
-.footer-name {
-    padding-right: 0.4rem;
-}
-
-.footer-divider {
-    padding: 0 0.4rem;
-    opacity: 0.5;
-}
