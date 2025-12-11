@@ -1,4 +1,9 @@
 /* styles.css — shared for HTML preview and EPUB */
+#bg-layer {
+  background-color: #111; /* dark fallback */
+  background-size: cover;
+  background-position: center;
+}
 
 html, body {
   margin: 0;
