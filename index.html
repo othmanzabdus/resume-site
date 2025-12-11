@@ -13,7 +13,7 @@
 </head>
 <body>
   <!-- Fullscreen background -->
-  <div id="bg-layer" class="cover"></div>
+  <div id="bg-layer" class="cover" style="background-image: url('media/background.gif');"></div>
 
   <main class="shell">
     <header class="hero">
@@ -63,10 +63,23 @@
       </p>
     </footer>
   </main>
- 
- <script>
-  window.CATEGORIES = {"digital": [{"name": "CGI", "key": "cgi", "bg": "cgi.gif"}, {"name": "Arcade Games", "key": "arcade", "bg": "arcade.gif"}, {"name": "Characters", "key": "characters", "bg": "characters.gif"}], "press": [{"name": "Story", "key": "story", "bg": "story.gif"}, {"name": "Publication", "key": "publication", "bg": "publication.gif"}, {"name": "Animation", "key": "animation", "bg": "animation.gif"}]};
-  window.DEFAULT_BG = "background.gif";
+
+  <!-- FIXED CATEGORY BACKGROUNDS -->
+  <script>
+    window.CATEGORIES = {
+      digital: [
+        { name: "CGI",          key: "cgi",         bg: "media/cgi.gif" },
+        { name: "Arcade Games", key: "arcade",      bg: "media/arcade.gif" },
+        { name: "Characters",   key: "characters",  bg: "media/characters.gif" }
+      ],
+      press: [
+        { name: "Story",        key: "story",       bg: "media/story.gif" },
+        { name: "Publication",  key: "publication", bg: "media/publication.gif" },
+        { name: "Animation",    key: "animation",   bg: "media/animation.gif" }
+      ]
+    };
+
+    window.DEFAULT_BG = "media/background.gif";
   </script>
 
   <script src="background.js"></script>

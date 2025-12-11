@@ -8,21 +8,33 @@
   // Default background (your main wallpaper GIF)
   const DEFAULT_BG = 'media/background.gif';
 
-  // Map category keys -> background images or video poster frames
+  // Map category keys -> background images
   const BG_MAP = {
-    cgi:        'media/cgi.gif',
-    arcade:     'media/arcade.gif',
-    characters: 'media/characters.gif',
-    story:      'media/story.gif',
-    publication:'media/publication.gif',
-    animation:  'media/animation.gif'
+    cgi:         'media/cgi.gif',
+    arcade:      'media/arcade.gif',
+    characters:  'media/characters.gif',
+    story:       'media/story.gif',
+    publication: 'media/publication.gif',
+    animation:   'media/animation.gif'
   };
 
   let resetTimer = null;
 
+  // Preload images + fallback if 404 (GitHub pages sometimes slow)
+  function preload(src, callback) {
+    const img = new Image();
+    img.onload = () => callback(true, src);
+    img.onerror = () => callback(false, src);
+    img.src = src;
+  }
+
   function setBackground(key) {
     const newBg = BG_MAP[key] || DEFAULT_BG;
-    bgLayer.style.backgroundImage = `url("${newBg}")`;
+
+    preload(newBg, (ok) => {
+      const finalImage = ok ? newBg : DEFAULT_BG;
+      bgLayer.style.backgroundImage = `url("${finalImage}")`;
+    });
 
     // Clear any previous timer
     if (resetTimer) {
@@ -41,14 +53,14 @@
     setBackground(key);
   }
 
-  // Attach listeners to all category links
+  // Attach listeners when DOM loads
   document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll(".category-link[data-key]");
     links.forEach((link) => {
       link.addEventListener("click", onCategoryClick);
     });
 
-    // Ensure default background on load
+    // Default background on load
     bgLayer.style.backgroundImage = `url("${DEFAULT_BG}")`;
   });
 })();
