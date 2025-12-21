@@ -1,0 +1,112 @@
+resume:
+  version: 1.0
+  last_updated: 2025-03-03
+  visibility: public
+
+identity:
+  name: Othman Abdus-Sabur
+  handle: OZA
+  title: >
+    Creative Systems Designer —
+    Visual Art, Interactive Media, and Automation
+  summary: >
+    Creative technologist blending digital illustration, interactive media,
+    and software systems design. Experienced in visual storytelling,
+    publication workflows, automation, and operational problem-solving
+    through simplified, scalable systems.
+
+contact:
+  email: your.email@example.com
+  linkedin
+  
+skills:
+  creative:
+    - Digital illustration
+    - Character design
+    - Visual storytelling
+    - CGI-style compositing
+    - Arcade-style game art
+    - Publication layout & cover design
+
+  technical:
+    - Python scripting
+    - Django web framework
+    - HTML5 / CSS3
+    - YAML / JSON data modeling
+    - EPUB3 generation
+    - REST-style APIs
+    - Linux command line
+
+  systems:
+    - Workflow automation
+    - File-based systems design
+    - Version control (Git)
+    - Content gating & access control
+    - Payment-flow logic (PayPal, invoices)
+    - Data integrity & record keeping
+
+  operations:
+    - Process documentation
+    - Quality control
+    - Inventory & asset tracking
+    - Deadline-driven production
+    - Cross-team coordination
+
+experience:
+  - role: Operations Associate
+    organization: Walmart Fashion Distribution Center
+    location: Bentonville, Arkansas
+    start_date: 2024-01
+    end_date: Present
+    summary: >
+      Operational role within a high-volume fashion distribution environment,
+      supporting inbound processing, quality verification, and inventory flow.
+    responsibilities:
+      - Verified inbound inventory accuracy against system records
+      - Identified and documented count discrepancies and workflow errors
+      - Supported slotting and put-away coordination
+      - Maintained process compliance under time-sensitive conditions
+      - Communicated operational issues across teams and supervisors
+    skills_applied:
+      - Process validation
+      - Quality assurance
+      - System accuracy
+      - Documentation
+      - Operational problem-solving
+
+  - role: Independent Digital Illustrator & Publisher
+    organization: Self-directed
+    location: Remote
+    start_date: 2018
+    end_date: Present
+    summary: >
+      Creation and publication of original digital artwork, visual stories,
+      and experimental publishing systems integrating art and software.
+    responsibilities:
+      - Produced original illustration and character-based content
+      - Designed digital publications and visual assets
+      - Built custom workflows for gated content and distribution
+      - Integrated creative output with web-based delivery systems
+    skills_applied:
+      - Digital illustration
+      - Visual design
+      - Publishing workflows
+      - Web integration
+
+instructions_for_ai:
+  purpose: >
+    This resume.yaml is a structured source of truth for generating
+    resumes, cover letters, professional summaries, and application
+    responses.
+  guidelines:
+    - Preserve factual accuracy; do not fabricate experience
+    - Prioritize clarity over marketing language
+    - Emphasize creative–technical hybrid roles
+    - Translate operational experience into systems thinking
+    - Avoid corporate jargon unless explicitly requested
+  preferred_tone:
+    - Clear
+    - Direct
+    - Thoughtful
+    - Professional without hype
+
